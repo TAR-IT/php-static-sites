@@ -1,5 +1,5 @@
 # PHP Static Sites Generator
-This is a handy little tool for creating static sites using PHP.
+This is a handy little tool for creating static sites using PHP. It is a consolidation of different snippets and ideas that I changed to my needs. My goal is to create a lightweight static site generator with SEO Tag implementations and multilanguage support.
 ## Table of Contents
 1. [Technologies Used](#technologies-used)
 2. [Getting Started](#getting-started)
@@ -7,9 +7,11 @@ This is a handy little tool for creating static sites using PHP.
     - [Usage](#usage)
 3. [License](#license)
 ## Technologies Used
-- [PHP](https://www.php.net/)
-- [Bash](https://www.gnu.org/software/bash/manual/bash.html)
+- [PHP](https://www.w3schools.com/php/)
 - [HTML](https://www.w3schools.com/html/)
+- [CSS](https://www.w3schools.com/css/)
+- [JavaScript](https://www.w3schools.com/js/)
+- [Bash](https://www.gnu.org/software/bash/manual/bash.html)
 ## Getting Started
 ### Installation
 1. Download & install [PHP](https://www.php.net/downloads).
