@@ -32,9 +32,6 @@
  * To run in prod mode, call `build.php --prod`
  */
 
-include '/lib/build-tools.php';
-include '/lib/seo-tags.php';
-
 $outputDir = __DIR__ . DIRECTORY_SEPARATOR . 'public';
 $pagesDir  = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'pages';
 $includesDir = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'includes';
