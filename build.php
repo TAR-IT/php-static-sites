@@ -5,7 +5,7 @@
  *
  * Pages can extend a template in src/templates by calling:
  *
- *   extend(string $template, array $variables)
+ *   startExtend(string $template, array $variables)
  *
  * at the start and:
  *
@@ -17,7 +17,10 @@
  *
  * Pages and parts can use the following method to use includes:
  *
- *   includePart(string $include, array $variables, bool $print)
+ *   startInclude(string $include, array $variables, bool $print)
+ * 
+ * At the moment, this function does not need a endInclude, since it does not exist.
+ * This is a placeholder for coming features.
  *
  * If environment variables are needed you can define these as PHP constants in:
  *
@@ -37,7 +40,7 @@ $includeFile;
 $templateFile;
 $templateVariables = [];
 
-function includePart(string $include, array $variables = [], bool $print = true)
+function startInclude(string $include, array $variables = [], bool $print = true)
 {
     global $includesDir, $includeFile;
     $calledBy = debug_backtrace()[0]['file'];
@@ -57,7 +60,7 @@ function includePart(string $include, array $variables = [], bool $print = true)
     return $output;
 }
 
-function extend(string $template, array $variables)
+function startExtend(string $template, array $variables)
 {
     global $templatesDir, $templateFile, $templateVariables;
     $calledBy = debug_backtrace()[0]['file'];
