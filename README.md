@@ -45,7 +45,7 @@ This is a handy little tool for creating static sites using PHP. It is a consoli
 2. Use enviroment variables for staging and production environments
     - the files "env.prod.php" and "env.stage.php" are used for enviromental variables
     - building the website will default to "env.stage.php" - using the "--prod" tag while building will switch to production variables ( in "env.prod.php")
-3. Generate the static sites by using the build script via the terminal
+3. Generate the static sites by using the build script via the terminal - the output files will be placed in "public/"
     ```bash
     php build.php # for staging variables
     ```
@@ -53,6 +53,7 @@ This is a handy little tool for creating static sites using PHP. It is a consoli
     ```bash
     php build.php --prod # for production variables 
     ```
+
 ### Testing
 No tests have been applied yet.
 ### Contributing
