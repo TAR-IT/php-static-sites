@@ -23,11 +23,14 @@ This is a handy little tool for creating static sites using PHP. It is a consoli
     - use templates to extend your pages with predefined html (default directory is "src/templates/")
         - pages can extend a template by calling the following function in your page:
             ```php
-            extend(string $template, array $variables)
+            startExtend(string $template, array $variables)
+            ```
+            ```php
+            endExtend()
             ```
         - This will extend the content of your page with the corresponding template file. Example usage in your .html file (where "default.html" is a template in "src/templates/"):
             ```html
-            <?php extend("default.html", []); ?>
+            <?php startExtend("default.html", []); ?>
                 <main>
                     <h1>This is the page content</h1>
                 </main>
