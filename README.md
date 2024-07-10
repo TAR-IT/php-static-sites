@@ -16,9 +16,9 @@ This is a handy little tool for creating static sites using PHP.
 1. Fork/clone the repository or download the repository as a .zip folder and unzip it.
 ### Usage
 1. Start building your pages & templates
-1. Generate the static sites by using the build script 
+1. Generate the static sites by using the build script via the terminal
     ```bash
-    ./build.sh
+    php build.php # --prod tag for production variables
     ```
 <!-- TODO: ## Testing -->
 <!-- TODO: ## Contributing -->
