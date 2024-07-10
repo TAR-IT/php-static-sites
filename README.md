@@ -1,4 +1,4 @@
-# PHP Static Sites Generator
+# PHPages - a static website generator using PHP
 This is a handy little tool for creating static sites using PHP. It is a consolidation of different snippets and ideas that I changed to my needs. My goal is to create a lightweight static site generator with SEO Tag implementations and multilanguage support.
 ## Table of Contents
 1. [Technologies Used](#technologies-used)
@@ -59,4 +59,4 @@ No tests have been applied yet.
 ### Contributing
 Contributing is not intendet yet.
 ## License
-This project is licensed under the [The Unlicense](https://choosealicense.com/licenses/unlicense/).
+This project is licensed under [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.de.html).
