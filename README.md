@@ -24,5 +24,3 @@ This is a handy little tool for creating static sites using PHP.
 <!-- TODO: ## Contributing -->
 ## License
 This project is licensed under the [The Unlicense](https://choosealicense.com/licenses/unlicense/).
-
-[FFmpeg](https://ffmpeg.org) is licensed under [GNU Lesser General Public License](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).
