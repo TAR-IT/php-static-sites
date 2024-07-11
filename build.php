@@ -52,7 +52,9 @@ function startInclude(string $include, array $variables = [], bool $print = true
     }
     extract($variables);
     ob_start();
+    echo "\r\n"; # Empty line at the start of the include
     include $includeFile;
+    echo "\r\n"; # Empty line at the end of the include
     $output = ob_get_clean();
     if ($print) {
         print $output;
@@ -67,6 +69,7 @@ function startExtend(string $template, array $variables)
     $templateFile = $templatesDir . DIRECTORY_SEPARATOR . $template;
     $templateVariables = $variables;
     ob_start();
+    echo "\r\n";
 }
 
 function endExtend()
@@ -76,6 +79,7 @@ function endExtend()
     extract($templateVariables);
     ob_start();
     include $templateFile;
+    echo "\r\n"; # Empty line at the end of the page
     $output = ob_get_clean();
     echo $output;
 }
@@ -91,9 +95,6 @@ function buildFile($filePath)
     return $output;
 }
 
-/*
- * This checks for, creates, and deletes the HTML file contents of the path
- */
 function clean($path) {
     echo "CLEANING HTML from $path\n";
     if (! file_exists($path)) {
