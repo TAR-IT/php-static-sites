@@ -43,18 +43,7 @@ function endExtend()
     echo $output;
 }
 
-function buildFile($filePath)
-{
-    $output = NULL;
-    if (file_exists($filePath)) {
-        ob_start();
-        include $filePath;
-        $output = ob_get_clean();
-    }
-    return $output;
-}
-
-function clean($path) {
+function cleanDir($path) {
     echo "CLEANING everything from $path\n";
     if (! file_exists($path)) {
         echo "CREATING output path $path\n";
@@ -72,6 +61,39 @@ function clean($path) {
             echo "DELETING $file\n";
             unlink($file);
         }
+    }
+}
+
+function buildFile($filePath)
+{
+    $output = NULL;
+    if (file_exists($filePath)) {
+        ob_start();
+        include $filePath;
+        $output = ob_get_clean();
+    }
+    return $output;
+}
+
+function build()
+{
+    global $assetsDir, $pagesDir, $outDir;
+    cleanDir($outDir);
+   
+    // Copy assets directory to output directory
+    $assetsOutputDir = $outDir . DIRECTORY_SEPARATOR . 'assets';
+    if (!file_exists($assetsOutputDir)) {
+        mkdir($assetsOutputDir, 0777, true);
+    }
+    copyDir($assetsDir, $assetsOutputDir);
+
+    // Build html files page by page
+    $pageFiles = glob($pagesDir . DIRECTORY_SEPARATOR . '*.html');
+    foreach ($pageFiles as $pageFile) {
+        $outFile = str_replace($pagesDir, $outDir, $pageFile);
+        print "BUILDING $pageFile to $outFile\n";
+        $out = buildFile($pageFile, false);
+        file_put_contents($outFile, $out);
     }
 }
 ?>

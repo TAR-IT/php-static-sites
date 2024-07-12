@@ -32,39 +32,10 @@
  * To run in prod mode, call `build.php --prod`
  */
 
+include 'config.php';
 include 'lib\build_tools.php';
 include 'lib\copy_dir.php';
 include 'lib\seo_tags.php';
-
-$assetsDir  = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'assets';
-$pagesDir  = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'pages';
-$includesDir = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'includes';
-$templatesDir = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'templates';
-$outputDir = __DIR__ . DIRECTORY_SEPARATOR . 'public';
-$includeFile;
-$templateFile;
-$templateVariables = [];
-
-function build()
-{
-    global $assetsDir, $pagesDir, $outputDir;
-    clean($outputDir);
-   
-    // Copy assets directory to output directory
-    $assetsOutputDir = $outputDir . DIRECTORY_SEPARATOR . 'assets';
-    if (!file_exists($assetsOutputDir)) {
-        mkdir($assetsOutputDir, 0777, true);
-    }
-    copyDir($assetsDir, $assetsOutputDir);
-
-    $pageFiles = glob($pagesDir . DIRECTORY_SEPARATOR . '*.html');
-    foreach ($pageFiles as $pageFile) {
-        $outfile = str_replace($pagesDir, $outputDir, $pageFile);
-        print "BUILDING $pageFile to $outfile\n";
-        $out = buildFile($pageFile, false);
-        file_put_contents($outfile, $out);
-    }
-}
 
 if (isset($_SERVER['argv'][1]) && '--prod' === $_SERVER['argv'][1]) {
     echo "Running production\n\n";
