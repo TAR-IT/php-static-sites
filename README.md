@@ -56,9 +56,15 @@ This is a handy little tool for creating static sites using PHP. It is a consoli
     ```bash
     php build.php --prod # for production variables 
     ```
-
+#### Multilanguage Support
+To do.
 ### Testing
 No tests have been applied yet.
+### To-Dos
+- Multilanguage support
+    - support for language specific includes
+    - support for language specific variables
+- SEO generator
 ### Contributing
 Contributing is not intendet yet.
 ## License

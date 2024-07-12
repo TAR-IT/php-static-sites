@@ -87,13 +87,61 @@ function build()
     }
     copyDir($assetsDir, $assetsOutputDir);
 
-    // Build html files page by page
-    $pageFiles = glob($pagesDir . DIRECTORY_SEPARATOR . '*.html');
-    foreach ($pageFiles as $pageFile) {
-        $outFile = str_replace($pagesDir, $outDir, $pageFile);
+    // Build html files from root pages directory
+    $rootPageFiles = glob($pagesDir . DIRECTORY_SEPARATOR . '*.html');
+    foreach ($rootPageFiles as $pageFile) {
+        // Determine the relative path from $pagesDir to $pageFile
+        $relativePath = substr($pageFile, strlen($pagesDir) + 1);
+        
+        // Construct the destination file path
+        $outFile = $outDir . DIRECTORY_SEPARATOR . $relativePath;
+        
         print "BUILDING $pageFile to $outFile\n";
         $out = buildFile($pageFile, false);
+        
+        // Ensure the directory for the output file exists
+        $outFileDir = dirname($outFile);
+        if (!file_exists($outFileDir)) {
+            mkdir($outFileDir, 0777, true);
+        }
+        
         file_put_contents($outFile, $out);
     }
+
+    // Build html files from language directories
+    $languageDirs = glob($pagesDir . DIRECTORY_SEPARATOR . '*', GLOB_ONLYDIR);
+    
+    foreach ($languageDirs as $languageDir) {
+        // Get language code from directory name
+        $langCode = basename($languageDir);
+
+        // Create corresponding output directory
+        $langOutDir = $outDir . DIRECTORY_SEPARATOR . $langCode;
+        if (!file_exists($langOutDir)) {
+            mkdir($langOutDir, 0777, true);
+        }
+
+        // Find all .html files in current language directory
+        $pageFiles = glob($languageDir . DIRECTORY_SEPARATOR . '*.html');
+        foreach ($pageFiles as $pageFile) {
+            // Determine the relative path from $languageDir to $pageFile
+            $relativePath = substr($pageFile, strlen($languageDir) + 1);
+            
+            // Construct the destination file path
+            $outFile = $langOutDir . DIRECTORY_SEPARATOR . $relativePath;
+            
+            print "BUILDING $pageFile to $outFile\n";
+            $out = buildFile($pageFile, false);
+            
+            // Ensure the directory for the output file exists
+            $outFileDir = dirname($outFile);
+            if (!file_exists($outFileDir)) {
+                mkdir($outFileDir, 0777, true);
+            }
+            
+            file_put_contents($outFile, $out);
+        }
+    }
 }
+
 ?>
