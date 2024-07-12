@@ -17,9 +17,13 @@ This is a handy little tool for creating static sites using PHP. It is a consoli
 ## Getting Started
 ### Installation
 1. Download & install [PHP](https://www.php.net/downloads).
+1. Download & install [Composer](https://getcomposer.org/download/).
 1. Fork/clone the repository or download the repository as a .zip folder and unzip it.
 ### Usage
-1. Start building your pages with the help of templates  and includes
+1. Start building your pages 
+    - you can place your pages in "/src/pages/" - the build script will automatically use all .html files inside of this directory
+    - if you want to build a multilanguage website, you can use the $languages variable in the config.php to define country codes for the subdirectories (e.g. "en" for english or "de" for german) - the subdirectories will automatically be generated
+2. Use templates and includes
     - use templates to extend your pages with predefined html (default directory is "src/templates/")
         - pages can extend a template by calling the following function in your page:
             ```php
@@ -39,16 +43,16 @@ This is a handy little tool for creating static sites using PHP. It is a consoli
     - use includes to include blocks of html in your pages (default directory is "src/includes/")
         - includes can be used to extend pages, templates or other includes:
             ```php
-            includePart(string $include, array $variables, bool $print)
+            startInclude(string $include, array $variables, bool $print)
             ```
         - This will extend the content of your page with the corresponding template file. Example usage in your .html file (where "nav.html" is a file in "/src/includes/"):
             ```html
             <?php includePart("nav.html", []); ?> 
             ```
-2. Use enviroment variables for staging and production environments
+3. Use enviroment variables for staging and production environments
     - the files "env.prod.php" and "env.stage.php" are used for enviromental variables
     - building the website will default to "env.stage.php" - using the "--prod" tag while building will switch to production variables ( in "env.prod.php")
-3. Generate the static sites by using the build script via the terminal - the output files will be placed in "public/"
+4. Generate the static sites by using the build script via the terminal - the output files will be placed in "public/"
     ```bash
     php build.php # for staging variables
     ```
