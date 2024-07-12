@@ -32,9 +32,9 @@
  * To run in prod mode, call `build.php --prod`
  */
 
- include 'lib\build_tools.php';
- include 'lib\copy_dir.php';
- include 'lib\seo_tags.php';
+include 'lib\build_tools.php';
+include 'lib\copy_dir.php';
+include 'lib\seo_tags.php';
 
 $assetsDir  = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'assets';
 $pagesDir  = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'pages';
@@ -65,8 +65,6 @@ function build()
         file_put_contents($outfile, $out);
     }
 }
-
-
 
 if (isset($_SERVER['argv'][1]) && '--prod' === $_SERVER['argv'][1]) {
     echo "Running production\n\n";
