@@ -145,9 +145,10 @@ function buildFile($filePath)
 }
 
 /* 
- * *******************************
+ * *****************************************************************
  * Function for building the pages
- * *******************************
+ * TODO: build from subdirectories using language-specific variables
+ * *****************************************************************
  */
 
 function build()
